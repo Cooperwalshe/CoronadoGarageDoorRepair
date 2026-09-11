@@ -1,0 +1,826 @@
+/* ===================================================================
+   Coronado Garage Door Repair
+   Palette: harbor ink, cool paper, weathered steel, brass hardware
+   Motif: horizontal panel lines, drawn from garage door sections
+   =================================================================== */
+
+:root {
+  --ink: #14202b;
+  --ink-soft: #2c3d4d;
+  --steel: #64798a;
+  --steel-pale: #8d9daa;
+  --paper: #f1f3f4;
+  --paper-lift: #ffffff;
+  --brass: #a8792a;
+  --brass-lit: #d9a445;
+  --line: #d3d9dc;
+  --line-dark: #35485a;
+
+  --measure: 66ch;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --stack: clamp(3.5rem, 8vw, 7rem);
+
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 3px;
+}
+
+/* ---------- Type scale ---------- */
+
+h1,
+h2,
+h3,
+h4,
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.08;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 6.2vw, 4.1rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.6vw, 2.6rem);
+}
+
+h3 {
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  letter-spacing: -0.012em;
+}
+
+p {
+  margin: 0 0 1.1em;
+  max-width: var(--measure);
+}
+
+.lede {
+  font-size: clamp(1.125rem, 1.9vw, 1.3rem);
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.muted {
+  color: var(--steel);
+}
+
+/* ---------- Layout ---------- */
+
+.wrap {
+  max-width: 74rem;
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--stack);
+}
+
+.section--tight {
+  padding-block: calc(var(--stack) * 0.6);
+}
+
+.section--dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.section--dark h2,
+.section--dark h3 {
+  color: var(--paper-lift);
+}
+
+.section--dark p {
+  color: #c3cdd5;
+}
+
+.section--lift {
+  background: var(--paper-lift);
+}
+
+/* Panel lines — the garage door motif, used as a section divider */
+.panel-rule {
+  border: 0;
+  height: 13px;
+  margin: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--line) 0 1px,
+    transparent 1px 4px
+  );
+}
+
+.panel-rule--dark {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--line-dark) 0 1px,
+    transparent 1px 4px
+  );
+}
+
+/* ---------- Header ---------- */
+
+.masthead {
+  background: var(--ink);
+  color: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.masthead__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 4.5rem;
+  padding-block: 0.75rem;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.0625rem;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--paper-lift);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.wordmark span {
+  display: block;
+}
+
+.wordmark small {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--brass-lit);
+}
+
+/* Small mark: three stacked panel bars */
+.mark {
+  width: 26px;
+  height: 30px;
+  flex: none;
+  border: 1.5px solid var(--brass-lit);
+  border-radius: 2px;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  padding: 3px;
+}
+
+.mark i {
+  background: var(--brass-lit);
+  opacity: 0.75;
+  border-radius: 1px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.nav a {
+  color: #cbd5dd;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+  color: var(--paper-lift);
+  text-decoration: underline;
+  text-decoration-color: var(--brass-lit);
+  text-decoration-thickness: 2px;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.005em;
+  padding: 0.85rem 1.5rem;
+  border-radius: 3px;
+  border: 1.5px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn--brass {
+  background: var(--brass-lit);
+  color: var(--ink);
+}
+
+.btn--brass:hover {
+  background: #e8b659;
+}
+
+.btn--ink {
+  background: var(--ink);
+  color: var(--paper-lift);
+}
+
+.btn--ink:hover {
+  background: var(--ink-soft);
+}
+
+.btn--outline {
+  border-color: var(--line-dark);
+  color: var(--ink);
+}
+
+.btn--outline:hover {
+  background: var(--ink);
+  color: var(--paper-lift);
+}
+
+.btn--ghost-light {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--paper-lift);
+}
+
+.btn--ghost-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn--wide {
+  width: 100%;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.hero h1 {
+  color: var(--paper-lift);
+}
+
+.hero__lede {
+  color: #c3cdd5;
+  font-size: clamp(1.1rem, 1.8vw, 1.28rem);
+  line-height: 1.55;
+  margin-top: 1.4rem;
+  max-width: 46ch;
+}
+
+.hero__facts {
+  list-style: none;
+  margin: 2.2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+  max-width: 44ch;
+}
+
+.hero__facts li {
+  padding-left: 1.5rem;
+  position: relative;
+  color: #c3cdd5;
+  font-size: 1rem;
+}
+
+.hero__facts li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.7rem;
+  height: 2px;
+  background: var(--brass-lit);
+}
+
+/* The call card — the phone number is the product, so it gets the weight */
+.callcard {
+  background: var(--paper-lift);
+  color: var(--ink);
+  border-radius: 4px;
+  padding: clamp(1.5rem, 3vw, 2.1rem);
+  border-top: 5px solid var(--brass-lit);
+}
+
+.callcard__label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--steel);
+  margin: 0 0 0.4rem;
+}
+
+.callcard__number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.85rem, 4vw, 2.5rem);
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--ink);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.7rem;
+}
+
+.callcard__number:hover {
+  color: var(--brass);
+}
+
+.callcard__note {
+  font-size: 0.95rem;
+  color: var(--steel);
+  margin: 0 0 1.25rem;
+  max-width: none;
+}
+
+.callcard__divider {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 1.25rem 0;
+}
+
+/* ---------- Content blocks ---------- */
+
+.block-head {
+  max-width: 58ch;
+  margin-bottom: 2.75rem;
+}
+
+.block-head p {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.service {
+  border-top: 2px solid var(--ink);
+  padding-top: 1.1rem;
+}
+
+.service h3 {
+  margin-bottom: 0.5rem;
+}
+
+.service p {
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+.section--dark .service {
+  border-top-color: var(--brass);
+}
+
+/* Salt-air feature block */
+.feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.checklist li {
+  padding-left: 1.75rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 2px solid var(--brass);
+  border-radius: 2px;
+}
+
+/* Steps — a real sequence, so numbering is warranted */
+.steps {
+  list-style: none;
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.steps li {
+  counter-increment: step;
+  border-top: 2px solid var(--brass);
+  padding-top: 1.1rem;
+}
+
+.steps li::before {
+  content: counter(step);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--brass);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.steps h3 {
+  margin-bottom: 0.4rem;
+}
+
+.steps p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+/* Areas */
+.arealist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.6rem 1.5rem;
+}
+
+.arealist li {
+  border-bottom: 1px solid var(--line);
+  padding: 0.6rem 0;
+  font-size: 1rem;
+}
+
+.section--dark .arealist li {
+  border-bottom-color: var(--line-dark);
+  color: #c3cdd5;
+}
+
+/* FAQ */
+.faq {
+  display: grid;
+  gap: 0;
+  max-width: 52rem;
+}
+
+.faq details {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq summary {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.075rem;
+  padding: 1.15rem 2.5rem 1.15rem 0;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 0.25rem;
+  top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--brass);
+  line-height: 1;
+}
+
+.faq details[open] summary::after {
+  content: "–";
+}
+
+.faq details > p {
+  margin: 0 0 1.35rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Form ---------- */
+
+.formwrap {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.form {
+  background: var(--paper-lift);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: 4px;
+  border-top: 5px solid var(--ink);
+}
+
+.section--dark .form {
+  border-top-color: var(--brass-lit);
+}
+
+.field {
+  margin-bottom: 1.15rem;
+}
+
+.field label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  margin-bottom: 0.35rem;
+  color: var(--ink);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 3px;
+  padding: 0.7rem 0.8rem;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--ink);
+  background: var(--paper-lift);
+}
+
+.field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.field small {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--steel);
+}
+
+.form__note {
+  font-size: 0.875rem;
+  color: var(--steel);
+  margin: 1rem 0 0;
+  max-width: none;
+}
+
+.hp {
+  position: absolute;
+  left: -9999px;
+}
+
+.formstatus {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 3px;
+  font-size: 0.95rem;
+  display: none;
+}
+
+.formstatus[data-state="ok"] {
+  display: block;
+  background: #e7f0e8;
+  border-left: 3px solid #3f7a4a;
+  color: #1f4428;
+}
+
+.formstatus[data-state="error"] {
+  display: block;
+  background: #f7e9e6;
+  border-left: 3px solid #9e4230;
+  color: #6b2a1d;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  background: var(--ink);
+  color: #aebac4;
+  padding-block: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: 0.9375rem;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.footer h4 {
+  font-size: 0.9375rem;
+  color: var(--paper-lift);
+  margin-bottom: 0.9rem;
+}
+
+.footer a {
+  color: #aebac4;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--brass-lit);
+  text-decoration: underline;
+}
+
+.footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.footer p {
+  max-width: 38ch;
+}
+
+.footer__legal {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line-dark);
+  font-size: 0.85rem;
+  color: #7e8e9a;
+}
+
+.footer__legal p {
+  max-width: 70ch;
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Sticky mobile call bar ---------- */
+
+.callbar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  background: var(--brass-lit);
+  color: var(--ink);
+  text-align: center;
+  padding: 0.9rem 1rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  box-shadow: 0 -2px 12px rgba(20, 32, 43, 0.25);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .hero__grid,
+  .feature,
+  .formwrap {
+    grid-template-columns: 1fr;
+  }
+
+  .grid--3,
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .nav {
+    gap: 1rem;
+  }
+
+  .nav a {
+    font-size: 0.875rem;
+  }
+
+  .nav .btn {
+    display: none;
+  }
+
+  .grid--2,
+  .grid--3,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  body {
+    padding-bottom: 3.6rem;
+  }
+
+  .callbar {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
