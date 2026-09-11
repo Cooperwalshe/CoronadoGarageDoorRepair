@@ -13,7 +13,7 @@
     // If the Formspree endpoint hasn't been set yet, don't pretend it worked.
     if (form.action.indexOf("YOUR_FORM_ID") !== -1) {
       event.preventDefault();
-      show("error", "This form isn't connected yet. Call 914-216-8511 instead.");
+      show("error", "This form isn't connected yet. Please try again shortly.");
       return;
     }
 
@@ -29,13 +29,13 @@
       .then(function (response) {
         if (response.ok) {
           form.reset();
-          show("ok", "Got it. We'll be in touch shortly. If it's urgent, call 914-216-8511.");
+          show("ok", "Got it. We'll be in touch shortly.");
         } else {
-          show("error", "That didn't go through. Please call 914-216-8511.");
+          show("error", "That didn't go through. Please try again in a moment.");
         }
       })
       .catch(function () {
-        show("error", "That didn't go through. Please call 914-216-8511.");
+        show("error", "That didn't go through. Please try again in a moment.");
       })
       .then(function () {
         button.disabled = false;

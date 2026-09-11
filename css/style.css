@@ -204,7 +204,7 @@ p {
 }
 
 /* Small mark: three stacked panel bars */
-.mark {
+.wordmark .mark {
   width: 26px;
   height: 30px;
   flex: none;
@@ -449,6 +449,10 @@ p {
 
 .section--dark .service {
   border-top-color: var(--brass);
+}
+
+.section--dark .service p {
+  color: #c3cdd5;
 }
 
 /* Salt-air feature block */
